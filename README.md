@@ -1338,6 +1338,57 @@ Most of the time, I would prefer the `.forEach` method, but it really depends on
 * What are the pros and cons of immutability?
 * How can you achieve immutability in your own code?
 
+The text-book definition of mutability is 'liable or subject to change or alteration'. In programming, we use the word to mean objects whose state is allowed to change over time. An immutable value is the exact opposite – after it has been created, it can never change. Native Javascript types like numbers and strings are immutable by design. However the objects, arrays, functions, classes, set and maps are muttable. 
+
+Examples:
+```js
+let a = {
+    foo: 'bar'
+};
+
+let b = a;
+
+a.foo = 'test';
+
+console.log(b.foo); // test
+console.log(a === b) // true
+```
+
+```js
+let a = 'test';
+let b = a;
+a = a.substring(2);
+
+console.log(a) //st
+console.log(b) //test
+console.log(a === b) //false
+```
+
+```js
+let a = ['foo', 'bar'];
+let b = a;
+
+a.push('baz')
+
+console.log(b); // ['foo', 'bar', 'baz']
+console.log(a === b) // true
+```
+
+```js
+let a = 1;
+let b = a;
+a++;
+
+console.log(a) //2
+console.log(b) //1
+console.log(a === b) //false
+```
+
+References:
+  * https://www.sitepoint.com/immutability-javascript/
+  * https://benmccormick.org/2016/06/04/what-are-mutable-and-immutable-data-structures-2/
+  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze
+
 TODO
 
 ### Explain the difference between synchronous and asynchronous functions.
